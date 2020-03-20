@@ -1,2 +1,2 @@
-# XManagementSystem
+# ClothsManagementSystem
 oop at gnu
