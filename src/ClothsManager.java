@@ -35,7 +35,37 @@ public class ClothsManager {
 		System.out.print("Cloths ID : ");
 		int clothsId = input.nextInt();
 		if (cloths.id == clothsId) {
-			System.out.println("the cloths to be edited is " + clothsId);
+			int num = -1;
+			while (num != 5) {
+				System.out.println("<Cloths Info Edit Menu>");
+				System.out.println("1. Edit Id");
+				System.out.println("2. Edit Name");
+				System.out.println("3. Edit Kind");
+				System.out.println("4. Edit Price");
+				System.out.println("5. Exit");
+				System.out.print("Select one : ");
+				num = input.nextInt();
+				if (num == 1) {
+					System.out.print("Cloths ID : ");
+					cloths.id = input.nextInt();
+				}
+				else if (num == 2) {
+					String enter = input.nextLine();
+					System.out.print("Cloths name : ");
+					cloths.name = input.nextLine();
+				}
+				else if (num == 3) {
+					System.out.print("Cloths kind : ");
+					cloths.kind = input.next();
+				}
+				else if (num == 4) {
+					System.out.print("Cloths price : ");
+					cloths.price = input.nextInt();
+				}
+				else {
+					continue;
+				}
+			}
 		}
 	}
 	public void viewCloths() {
