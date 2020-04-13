@@ -10,7 +10,7 @@ public class MenuManager {
 			System.out.println("1. Add Cloths");
 			System.out.println("2. Delete Cloths");
 			System.out.println("3. Edit Cloths");
-			System.out.println("4. View Cloths");
+			System.out.println("4. View Clothes");
 			System.out.println("5. Exit");
 			System.out.print("Select one : ");
 			num = input.nextInt();
@@ -24,7 +24,7 @@ public class MenuManager {
 				clothsManager.editCloths();
 			}
 			else if (num == 4) {
-				clothsManager.viewCloths();
+				clothsManager.viewClothes();
 			}
 			else {
 				continue;
