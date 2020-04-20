@@ -1,39 +1,57 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import cloths.Cloths;
+import cloths.FormalCloths;
+
 public class ClothsManager {
 	ArrayList<Cloths> clothes = new ArrayList<Cloths>();
-	Scanner input; // 이게 input을 scanner 변수로 선언한건지, scanner 가 아니라 딴거여도 되는지
+	Scanner input;
 
 	ClothsManager(Scanner input) {
 		this.input = input;
 	}
 	public void addCloths() {
-		Cloths cloths = new Cloths(); // 왜 이 부분에서만 new 설정을 해주나?여기서 최초 설정으로 Cloths에 넣어주기 때문?
-		System.out.print("Cloths ID : ");
-		cloths.id = input.nextInt();
-		String enter = input.nextLine();
-		System.out.print("Cloths name : ");
-		cloths.name = input.nextLine();
-		System.out.print("Cloths kind : ");
-		cloths.kind = input.next();
-		System.out.print("Cloths price : ");
-		cloths.price = input.nextInt();
-		clothes.add(cloths);
+		int look = 0;
+		Cloths cloths;
+		while (look != 1 && look != 2) {
+			System.out.print("1 for Casual");
+			System.out.print("2 for Formal");
+			System.out.print("Select num for cloths look between 1 and 2 : ");
+			look = input.nextInt();
+			if (look == 1) {
+				cloths = new Cloths();
+				cloths.getClothsInput(input);
+				clothes.add(cloths);
+				break;
+			}
+			else if (look == 2) {
+				cloths = new FormalCloths();
+				cloths.getClothsInput(input);
+				clothes.add(cloths);
+				break;
+			}
+			else {
+				System.out.print("Select num for cloths look between 1 and 2 : ");
+			}
+		}
+		
+		
+		
+		
 	}
 	public void deleteCloths() {
 		System.out.print("Cloths ID : ");
 		int clothsId = input.nextInt();
 		int index = -1;
 		for (int i = 0; i<clothes.size(); i++ ) {
-			if (clothes.get(i).id == clothsId) {
+			if (clothes.get(i).getId() == clothsId) {
 				index = i;
 				break;
 			}	
 		}
 		if (index >= 0) {
 			clothes.remove(index);
-			Cloths.numClothesRegistered--;
 			System.out.println("the cloths " + clothsId + " is deleted");
 		}
 		else {
@@ -48,7 +66,7 @@ public class ClothsManager {
 		int clothsId = input.nextInt();
 		for (int i = 0; i<clothes.size(); i++ ) {
 			Cloths cloths = clothes.get(i);
-			if (cloths.id == clothsId) {
+			if (cloths.getId() == clothsId) {
 				int num = -1;
 				while (num != 5) {
 					System.out.println("<Cloths Info Edit Menu>");
@@ -61,20 +79,24 @@ public class ClothsManager {
 					num = input.nextInt();
 					if (num == 1) {
 						System.out.print("Cloths ID : ");
-						cloths.id = input.nextInt();
+						int id = input.nextInt();
+						cloths.setId(id);
 					}
 					else if (num == 2) {
 						String enter = input.nextLine();
 						System.out.print("Cloths name : ");
-						cloths.name = input.nextLine();
+						String name = input.nextLine();
+						cloths.setName(name);
 					}
 					else if (num == 3) {
 						System.out.print("Cloths kind : ");
-						cloths.kind = input.next();
+						String kind = input.next();
+						cloths.setKind(kind);
 					}
 					else if (num == 4) {
 						System.out.print("Cloths price : ");
-						cloths.price = input.nextInt();
+						int price = input.nextInt();
+						cloths.setPrice(price);
 					}
 					else {
 						continue;
@@ -88,7 +110,7 @@ public class ClothsManager {
 	public void viewClothes() {
 //		System.out.print("Cloths ID : ");
 //		int clothsId = input.nextInt();
-		System.out.println("# of registered clothes :" + Cloths.numClothesRegistered);
+		System.out.println("# of registered clothes :" + clothes.size());
 		for (int i = 0; i<clothes.size(); i++ ) {
 			clothes.get(i).printInfo();
 		}
