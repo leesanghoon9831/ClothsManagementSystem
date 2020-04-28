@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import cloths.Cloths;
+import cloths.ClothsLook;
 import cloths.FormalCloths;
+import cloths.UniformCloths;
 
 public class ClothsManager {
 	ArrayList<Cloths> clothes = new ArrayList<Cloths>();
@@ -15,18 +17,25 @@ public class ClothsManager {
 		int look = 0;
 		Cloths cloths;
 		while (look != 1 && look != 2) {
-			System.out.print("1 for Casual");
-			System.out.print("2 for Formal");
-			System.out.print("Select num for cloths look between 1 and 2 : ");
+			System.out.println("1 for Casual");
+			System.out.println("2 for Formal");
+			System.out.println("3 for Uniform");
+			System.out.print("Select num 1, 2 or 3 for cloths look : ");
 			look = input.nextInt();
 			if (look == 1) {
-				cloths = new Cloths();
+				cloths = new Cloths(ClothsLook.Casual);
 				cloths.getClothsInput(input);
 				clothes.add(cloths);
 				break;
 			}
 			else if (look == 2) {
-				cloths = new FormalCloths();
+				cloths = new FormalCloths(ClothsLook.Formal);
+				cloths.getClothsInput(input);
+				clothes.add(cloths);
+				break;
+			}
+			else if (look == 3) {
+				cloths = new UniformCloths(ClothsLook.Uniform);
 				cloths.getClothsInput(input);
 				clothes.add(cloths);
 				break;
@@ -34,11 +43,7 @@ public class ClothsManager {
 			else {
 				System.out.print("Select num for cloths look between 1 and 2 : ");
 			}
-		}
-		
-		
-		
-		
+		}	
 	}
 	public void deleteCloths() {
 		System.out.print("Cloths ID : ");
@@ -58,8 +63,6 @@ public class ClothsManager {
 			System.out.println("the cloths has not been registered");
 			return;
 		}
-		
-		
 	}
 	public void editCloths() {
 		System.out.print("Cloths ID : ");
@@ -105,15 +108,13 @@ public class ClothsManager {
 				break;
 			} // if
 		} // for
-		
 	}
 	public void viewClothes() {
-//		System.out.print("Cloths ID : ");
-//		int clothsId = input.nextInt();
+		//		System.out.print("Cloths ID : ");
+		//		int clothsId = input.nextInt();
 		System.out.println("# of registered clothes :" + clothes.size());
 		for (int i = 0; i<clothes.size(); i++ ) {
 			clothes.get(i).printInfo();
 		}
-		
 	}
 }

@@ -14,6 +14,10 @@ public class Cloths {
 
 	}
 	
+	public Cloths(ClothsLook look) {
+		this.look = look;
+	}
+	
 	public Cloths(int id, String name) {
 		this.id = id;
 		this.name = name;
@@ -27,6 +31,16 @@ public class Cloths {
 		this.price = price;
 
 	}
+	
+	public Cloths(ClothsLook look, int id, String name, String kind, int price) {
+		this.look = look;
+		this.id = id;
+		this.name = name;
+		this.kind = kind;
+		this.price = price;
+
+	}
+	
 	public ClothsLook getLook() {
 		return look;
 	}
@@ -67,8 +81,26 @@ public class Cloths {
 		this.price = price;
 	}
 	
+	
 	public void printInfo() {
-		System.out.println("id : " + id + " name : " + name + " kind : " + kind + " price : " + price);
+		String slook = "none";
+		switch(this.look) {
+		case Casual:
+			slook = "Casual";
+			break;
+		case Formal:
+			slook = "Formal";
+			break;
+		case Sportive:
+			slook = "Sportive";
+			break;
+		case Uniform:
+			slook = "Uniform";
+			break;
+		default:
+		}
+		
+		System.out.println("look : " + slook + " id : " + id + " name : " + name + " kind : " + kind + " price : " + price);
 	}
 	
 	public void getClothsInput(Scanner input) {

@@ -3,6 +3,11 @@ package cloths;
 import java.util.Scanner;
 
 public class FormalCloths extends Cloths {
+	
+	public FormalCloths(ClothsLook look) {
+		super(look);
+	}
+	
 	public void getClothsInput(Scanner input) {
 		System.out.print("Cloths ID : ");
 		int id = input.nextInt();
@@ -32,9 +37,7 @@ public class FormalCloths extends Cloths {
 				break;
 			}
 			else {
-
 			}
 		}
 	}
-
 }
