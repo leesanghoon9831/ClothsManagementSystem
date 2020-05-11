@@ -6,29 +6,34 @@ public class MenuManager {
 		ClothsManager clothsManager = new ClothsManager(input);
 		int num = -1;
 		while (num != 5) {
-			System.out.println("<Welcome to Closet!>");
-			System.out.println("1. Add Cloths");
-			System.out.println("2. Delete Cloths");
-			System.out.println("3. Edit Cloths");
-			System.out.println("4. View Clothes");
-			System.out.println("5. Exit");
-			System.out.print("Select one : ");
+			showMenu();
 			num = input.nextInt();
-			if (num == 1) {
+			switch(num) {
+			case 1:
 				clothsManager.addCloths();
-			}
-			else if (num == 2) {
+				break;
+			case 2:
 				clothsManager.deleteCloths();
-			}
-			else if (num == 3) {
+				break;
+			case 3:
 				clothsManager.editCloths();
-			}
-			else if (num == 4) {
+				break;
+			case 4:
 				clothsManager.viewClothes();
-			}
-			else {
+				break;
+			default:
 				continue;
 			}
 		}
-	}	
+	}
+	
+	public static void showMenu() {
+		System.out.println("<Welcome to Closet!>");
+		System.out.println("1. Add Cloths");
+		System.out.println("2. Delete Cloths");
+		System.out.println("3. Edit Cloths");
+		System.out.println("4. View Clothes");
+		System.out.println("5. Exit");
+		System.out.print("Select one : ");
+	}
 }

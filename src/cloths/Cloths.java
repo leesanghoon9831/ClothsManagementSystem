@@ -2,7 +2,7 @@ package cloths;
 
 import java.util.Scanner;
 
-public class Cloths {
+public abstract class Cloths implements ClothsInput{
 	
 	protected ClothsLook look = ClothsLook.Casual;
 	protected int id;
@@ -82,7 +82,31 @@ public class Cloths {
 	}
 	
 	
-	public void printInfo() {
+	public abstract void printInfo();
+	
+	public void setClothsID(Scanner input) {
+		System.out.print("Cloths ID : ");
+		int id = input.nextInt();
+		this.setId(id);
+	}
+	public void setClothsName(Scanner input) {
+		String enter = input.nextLine();
+		System.out.print("Cloths name : ");
+		String name = input.nextLine();
+		this.setName(name);
+	}
+	public void setClothsKind(Scanner input) {
+		System.out.print("Cloths kind : ");
+		String kind = input.next();
+		this.setKind(kind);
+	}
+	public void setClothsPrice(Scanner input) {
+		System.out.print("Cloths price : ");
+		int price = input.nextInt();
+		this.setPrice(price);
+	}
+	
+	public String getLookString() {
 		String slook = "none";
 		switch(this.look) {
 		case Casual:
@@ -99,27 +123,9 @@ public class Cloths {
 			break;
 		default:
 		}
-		
-		System.out.println("look : " + slook + " id : " + id + " name : " + name + " kind : " + kind + " price : " + price);
+		return slook;
 	}
 	
-	public void getClothsInput(Scanner input) {
-		System.out.print("Cloths ID : ");
-		int id = input.nextInt();
-		this.setId(id);
-		
-		String enter = input.nextLine();
-		System.out.print("Cloths name : ");
-		String name = input.nextLine();
-		this.setName(name);
-		
-		System.out.print("Cloths kind : ");
-		String kind = input.next();
-		this.setKind(kind);
-		
-		System.out.print("Cloths price : ");
-		int price = input.nextInt();
-		this.setPrice(price);
-	}
+	
 
 }
