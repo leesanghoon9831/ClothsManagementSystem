@@ -2,6 +2,8 @@ package cloths;
 
 import java.util.Scanner;
 
+import exception.KindFormatException;
+
 public interface ClothsInput {
 	
 	public int getId();
@@ -10,7 +12,7 @@ public interface ClothsInput {
 	
 	public void setName(String name);
 	
-	public void setKind(String kind);
+	public void setKind(String kind) throws KindFormatException;
 	
 	public void setPrice(int price);
 	

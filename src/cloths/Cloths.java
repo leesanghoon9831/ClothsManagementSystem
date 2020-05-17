@@ -2,6 +2,8 @@ package cloths;
 
 import java.util.Scanner;
 
+import exception.KindFormatException;
+
 public abstract class Cloths implements ClothsInput{
 	
 	protected ClothsLook look = ClothsLook.Casual;
@@ -69,7 +71,10 @@ public abstract class Cloths implements ClothsInput{
 		return kind;
 	}
 
-	public void setKind(String kind) {
+	public void setKind(String kind) throws KindFormatException {
+		if (!kind.contains("top") && !kind.contains("pants") && !kind.contains("outer") && !kind.contains("acc")) {
+			throw new KindFormatException();
+		}
 		this.kind = kind;
 	}
 
@@ -96,9 +101,16 @@ public abstract class Cloths implements ClothsInput{
 		this.setName(name);
 	}
 	public void setClothsKind(Scanner input) {
-		System.out.print("Cloths kind : ");
-		String kind = input.next();
-		this.setKind(kind);
+		String kind = "";
+		while (!kind.contains("top") && !kind.contains("pants") && !kind.contains("outer") && !kind.contains("acc")) {
+			System.out.print("Cloths kind : ");
+			kind = input.next();
+			try {
+				this.setKind(kind);
+			} catch (KindFormatException e) {
+				System.out.println("Incorrect Kind Format. choose one outer, top, pants, acc");
+			}
+		}
 	}
 	public void setClothsPrice(Scanner input) {
 		System.out.print("Cloths price : ");
@@ -125,7 +137,4 @@ public abstract class Cloths implements ClothsInput{
 		}
 		return slook;
 	}
-	
-	
-
 }
