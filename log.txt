@@ -1,0 +1,2 @@
+5월 25, 2020 6:41:36 오후 log.EventLogger log
+정보: view a list of cloths

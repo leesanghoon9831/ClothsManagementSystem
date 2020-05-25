@@ -1,10 +1,15 @@
 package cloths;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.KindFormatException;
 
-public abstract class Cloths implements ClothsInput{
+public abstract class Cloths implements ClothsInput, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -895042372044783391L;
 	
 	protected ClothsLook look = ClothsLook.Casual;
 	protected int id;

@@ -1,17 +1,22 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import cloths.CasualCloths;
-import cloths.Cloths;
 import cloths.ClothsInput;
 import cloths.ClothsLook;
 import cloths.FormalCloths;
 import cloths.UniformCloths;
 
-public class ClothsManager {
+public class ClothsManager implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4927665238907880319L;
+	
 	ArrayList<ClothsInput> clothes = new ArrayList<ClothsInput>();
-	Scanner input;
+	transient Scanner input;
 
 	ClothsManager(Scanner input) {
 		this.input = input;
@@ -123,8 +128,6 @@ public class ClothsManager {
 		}
 	}
 
-
-
 	public void showEditMenu() {
 		System.out.println("<Cloths Info Edit Menu>");
 		System.out.println("1. Edit Id");
@@ -133,5 +136,9 @@ public class ClothsManager {
 		System.out.println("4. Edit Price");
 		System.out.println("5. Exit");
 		System.out.print("Select one : ");
+	}
+	
+	public void setScanner(Scanner input) {
+		this.input = input;
 	}
 }
