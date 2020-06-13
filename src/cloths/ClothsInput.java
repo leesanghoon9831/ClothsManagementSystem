@@ -10,9 +10,15 @@ public interface ClothsInput {
 	
 	public void setId(int id);
 	
+	public String getName();
+	
 	public void setName(String name);
 	
+	public String getKind();
+	
 	public void setKind(String kind) throws KindFormatException;
+	
+	public int getPrice();
 	
 	public void setPrice(int price);
 	
